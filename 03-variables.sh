@@ -7,7 +7,7 @@ echo b=${b}
 c=true
 echo ${c}
 
-Date=$(date+%F)
+Date=$(date +%F)
 echo today date is ${Date}
 
 add=$((2+3))
