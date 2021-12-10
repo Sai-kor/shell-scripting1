@@ -2,6 +2,3 @@
 
 # comment for understanding
 ls
-cat
-
-
