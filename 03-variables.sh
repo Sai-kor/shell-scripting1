@@ -12,3 +12,7 @@ echo today date is ${Date}
 
 add=$((2+3))
 echo add=${add}
+
+b=(10 20)
+echo ${b[0]}
+
