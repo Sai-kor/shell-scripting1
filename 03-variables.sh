@@ -16,3 +16,5 @@ echo add=${add}
 b=(10 20)
 echo ${b[0]}
 
+echo USER=${USER}
+echo A=${A}
