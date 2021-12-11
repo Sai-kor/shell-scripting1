@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo reddis setup
+echo redis setup
