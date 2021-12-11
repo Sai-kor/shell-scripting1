@@ -15,4 +15,4 @@ if [ ! -e componenets/"${component}".sh ]; then
   exit
 fi
 
-bash ${component}.sh
+bash Components/"${component}".sh
