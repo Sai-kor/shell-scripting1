@@ -22,7 +22,7 @@
 echo frontend setup
 stat_check(){
 if [ "${1}" -ne 0 ]; then
- echo "\e[1;31m$2\e[0m"
+ echo -e "\e[1;31m$2\e[0m"
  exit 1
 fi
 }
