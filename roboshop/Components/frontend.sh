@@ -30,6 +30,7 @@ if [ "${1}" -ne 0 ]; then
  else
    echo -e "\e[1;32m${2} --SUCCESS\e[0m"
 fi
+
 }
 yum install nginx -y >>${LOG_FILE}
 stat_check $? "Nginx installation"
