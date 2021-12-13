@@ -22,14 +22,16 @@
 echo frontend setup
 stat_check(){
 if [ "${1}" -ne 0 ]; then
- echo -e "\e[1;31m$2\e[0m"
+ echo -e "\e[1;31m${2} -- FAILED\e[0m"
  exit 1
+ else
+   echo -e "\e[1;32m${2} --SUCCESS\e[0m"
 fi
 }
 yum install nginx -y
-stat_check $? "Nginx installation failed"
+stat_check $? "Nginx installation"
 curl -f -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zi"
-stat_check $? "Download frontend failed"
+stat_check $? "Download frontend"
 cd /usr/share/nginx/html
 rm -rf *
 unzip /tmp/frontend.zip
