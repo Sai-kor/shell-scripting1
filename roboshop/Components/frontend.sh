@@ -19,7 +19,7 @@
 #Finally restart the service once to effect the changes.
 
 # systemctl restart nginx
-echo frontend setup
+#echo frontend setup
 LOG_FILE=/tmp/roboshop.log
 rm -f ${LOG_FILE}
 
@@ -32,9 +32,9 @@ if [ "${1}" -ne 0 ]; then
 fi
 
 }
-yum install nginx -y >>${LOG_FILE}
+yum install nginx -y &>>${LOG_FILE}
 stat_check $? "Nginx installation"
-curl -f -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zi"
+curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" &>>${LOG_FILE}
 stat_check $? "Download frontend"
 cd /usr/share/nginx/html
 rm -rf *
