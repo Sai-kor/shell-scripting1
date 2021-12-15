@@ -6,8 +6,8 @@ source Components/common.sh
 
 yum install nginx -y &>>${LOG_FILE}
 stat_check $? "Nginx installation"
-curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" &>>${LOG_FILE}
-stat_check $? "Download frontend"
+
+DOWNLOAD frontend
 
 rm -rf /usr/share/nginx/html/*
 stat_check $? "Remove old html pages"

@@ -14,3 +14,8 @@ fi
 }
 
 set-hostname -skip-apply ${component}
+
+DOWNLOAD(){
+  curl -s -L -o /tmp/${1}.zip "https://github.com/roboshop-devops-project/${1}/archive/main.zip"
+  stat_check $? "Download ${1} code"
+}
