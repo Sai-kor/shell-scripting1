@@ -22,7 +22,7 @@ DOWNLOAD mongodb
  stat_check $? "Load Schema"
 
  ##Redis setup
- echo -e "                -------->>>>>> \e[1;35mMongoDB Setup\e[0m  <<<<<<-------------"
+ echo -e "                -------->>>>>> \e[1;35mRedis Setup\e[0m  <<<<<<-------------"
  curl -L https://raw.githubusercontent.com/roboshop-devops-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo &>>{LOG_FILE}
   stat_check $? "Download Redis Repo"
 
