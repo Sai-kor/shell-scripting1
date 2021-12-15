@@ -5,7 +5,7 @@ echo -e "\e[1;31mYou should be a root user to perform this script\e[0m"
 exit
 fi
 
-component=$1
+export component=$1
 if [ -z "${component}" ]; then
   echo -e "\e[1;31mcomponent input missing\e[0m"
   exit
