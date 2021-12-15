@@ -12,7 +12,7 @@ stat_check $? "Download frontend"
 rm -rf /usr/share/nginx/html/*
 stat_check $? "Remove old html pages"
 
-cd /tmp && unzip /tmp/frontend.zip &>>${LOG_FILE}
+cd /tmp && unzip -o /tmp/frontend.zip &>>${LOG_FILE}
 stat_check $? "extracting frontend content"
 
 cd /tmp/frontend-main/static/ && cp -r * /usr/share/nginx/html/

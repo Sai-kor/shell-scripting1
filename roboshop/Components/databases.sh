@@ -27,7 +27,7 @@ source Components/common.sh
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo &>>${LOG_FILE}
 stat_check $? "Download mongodb repo"
 
-yum install -y mongodb-org
+yum install -y mongodb-org &>>${LOG_FILE}
 stat_check $? "Install Mongodb"
 
 systemctl enable mongod &>>${LOG_FILE} && systemctl start mongod &>>${LOG_FILE}
