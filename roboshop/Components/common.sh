@@ -19,6 +19,6 @@ DOWNLOAD(){
   curl -s -L -o /tmp/${1}.zip "https://github.com/roboshop-devops-project/${1}/archive/main.zip" &>>${LOG_FILE}
   stat_check $? "Download ${1} code"
   cd /tmp
-  unzip -o /tmp/{1}.zip&>>${LOG_FILE}
+  unzip -o /tmp/${1}.zip&>>${LOG_FILE}
   stat_check $? "Extracting ${1} code"
 }
