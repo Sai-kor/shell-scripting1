@@ -39,11 +39,7 @@ stat_check $? "Download frontend"
 
 rm -rf /usr/share/nginx/html/*
 stat_check $? "Remove old html pages"
-if [ -f "/tmp/frontend-main/" ]; then
-  {
-    rm -rf /tmp/frontend-main
-  }
-  fi
+
 cd /tmp && unzip /tmp/frontend.zip &>>${LOG_FILE}
 stat_check $? "extracting frontend content"
 
@@ -53,5 +49,6 @@ stat_check $? "copying frontend content"
 cp /tmp/frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf
 stat_check $? "Update Nginx config file"
 
-systemctl enable nginx &>>${LOG_FILE} && systemctl start nginx &>>${LOG_FILE}
+systemctl enable nginx &>>${LOG_FILE} && systemctl restart nginx &>>${LOG_FILE}
+stat_check $? "Restart Nginx"
 #systemctl restart nginx
