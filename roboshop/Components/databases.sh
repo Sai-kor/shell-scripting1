@@ -37,7 +37,7 @@ DOWNLOAD mongodb
   stat_check $? "start redis service"
 
   ##Rabbitmq setup
-  echo -e "                -------->>>>>> \e[1;35mRedis Setup\e[0m  <<<<<<-------------"
+  echo -e "                -------->>>>>> \e[1;35mRabbitMQ Setup\e[0m  <<<<<<-------------"
 
   curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash &>>{LOG_FILE}
   stat_check $? "Download RabbitMQ repo"
