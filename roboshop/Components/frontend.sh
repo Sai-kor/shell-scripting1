@@ -41,7 +41,7 @@ rm -rf /usr/share/nginx/html/*
 stat_check $? "Remove old html pages"
 if [ -f "/tmp/frontend-main/" ]; then
   {
-    rm -rf /tmp/frontend-main/
+    rm -rf /tmp/frontend-main
   }
   fi
 cd /tmp && unzip /tmp/frontend.zip &>>${LOG_FILE}
