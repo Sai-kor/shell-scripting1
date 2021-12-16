@@ -58,17 +58,20 @@ stat_check $? "Configure App user permissions"
 
 ##Mysql setup
 echo -e "                -------->>>>>> \e[1;35mMysql Setup\e[0m  <<<<<<-------------"
-curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/roboshop-devops-project/mysql/main/mysql.repo &>>{LOG_FILE}
+curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/roboshop-devops-project/mysql/main/mysql.repo &>>${LOG_FILE}
 stat_check $? "Download mysql repo"
 
-yum install mysql-community-server -y &>>{LOG_FILE}
+yum install mysql-community-server -y &>>${LOG_FILE}
 stat_check $? "Install mysql"
 
-systemctl enable mysqld&>>{LOG_FILE} && systemctl start mysqld&>>{LOG_FILE}
+systemctl enable mysqld&>>${LOG_FILE} && systemctl start mysqld &>>${LOG_FILE}
 stat_check $? "Start mysql service"
 
-#Now a default root password will be generated and given in the log file.
-# grep temp /var/log/mysqld.log
+DEFAULT_PASSWORD=$(sudo grep 'temporary password' /var/log/mysqld.log |awk '{print $NF}')
+
+echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'Roboshop@1';" >/tmp/pass.sql
+mysql -uroot -p"${DEFAULT_PASSWORD}" < /tmp/pass.sql
+
 
 #Next, We need to change the default root password in order to start using the database service.
 # mysql_secure_installation
