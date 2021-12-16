@@ -1,3 +1,6 @@
 #!/bin/bash
 
-echo user setup
+source Components/common.sh
+
+NODEJS user
+
