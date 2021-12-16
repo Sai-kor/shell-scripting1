@@ -83,7 +83,7 @@ if [ $? -eq 0 ]; then
   stat_check $? "Uninstall password plugin"
 fi
 
-
-#DOWNLOAD mysql
-#cd mysql-main
-#mysql -u root -pRoboShop@1 <shipping.sql
+DOWNLOAD mysql
+cd /tmp/mysql-main
+mysql -u root -pRoboShop@1 <shipping.sql &>>{LOG_FILE}
+stat_check $? "Load schema to mysql"
