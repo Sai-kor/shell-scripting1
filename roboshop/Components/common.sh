@@ -20,6 +20,8 @@ SYSTEMD_SETUP(){
     -e 's/REDIS_ENDPOINT/redis.devops.internal/' \
     -e 's/MONGO_ENDPOINT/mongodb.devops.internal/' \
     -e 's/CATALOGUE_ENDPOINT/catalogue.devops.internal/' \
+    -e 's/CARTENDPOINT/cart.devops.internal/' \
+    -e 's/DBHOST/mysql.devops.internal/' \
      /home/roboshop/${COMPONENT}/systemd.service &>>${LOG_FILE} && mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service &>>${LOG_FILE}
     stat_check $? "update systemd config file"
 
