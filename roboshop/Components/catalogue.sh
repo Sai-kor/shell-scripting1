@@ -1,18 +1,12 @@
 #!/bin/bash
-echo setup
-# yum install nodejs make gcc-c++ -y
-#Let's now set up the catalogue application.
+source Components/common.sh
 
-#As part of operating system standards, we run all the applications and databases as a normal user but not with root user.
+yum install nodejs make gcc-c++ -y &>>${LOG_FILE}
+stat_check $? "Install nodejs"
 
-#So to run the catalogue service we choose to run as a normal user and that user name should be more relevant to the project. Hence we will use roboshop as the username to run the service.
-
-# useradd roboshop
-#So let's switch to the roboshop user and run the following commands.
-
-#$ curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip"
-#$ cd /home/roboshop
-#$ unzip /tmp/catalogue.zip
+useradd roboshop &>>${LOG_FILE}
+stat_check $? "Add app user"
+DOWNLOAD catalogue
 #$ mv catalogue-main catalogue
 #$ cd /home/roboshop/catalogue
 #$ npm install
@@ -23,4 +17,4 @@ echo setup
 # systemctl daemon-reload
 # systemctl start catalogue
 # systemctl enable catalogue
-source Components/common.sh
+
