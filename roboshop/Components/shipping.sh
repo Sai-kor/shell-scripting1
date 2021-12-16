@@ -1,3 +1,5 @@
 #!/bin/bash
 
-echo shipping setup
+source Components/common.sh
+
+JAVA shipping
