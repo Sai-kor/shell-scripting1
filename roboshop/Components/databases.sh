@@ -1,8 +1,8 @@
 #!/bin/bash
-
+source Components/common.sh
 ###Mongodb setup
 #echo -e "                -------->>>>>> \e[1;35mMongoDB Setup\e[0m  <<<<<<-------------"
-#source Components/common.sh
+#
 #curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo &>>${LOG_FILE}
 #stat_check $? "Download mongodb repo"
 #
