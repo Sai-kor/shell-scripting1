@@ -75,27 +75,14 @@ if [ $? -ne 0 ]; then
   mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}" < /tmp/pass.sql &>>${LOG_FILE}
   stat_check $? "Setup new root password"
 fi
-#Next, We need to change the default root password in order to start using the database service.
-# mysql_secure_installation
 
-#You can check the new password working or not using the following command.
+echo 'show plugins;'|mysql -uroot -pRoboshop@1 2>>{LOG_FILE}|grep 'validate_password' &>>{LOG_FILE}
+if [ $? -ne 0 ]; then
+  echo 'uninstall plugin validate_password;'|mysql -uroot -pRoboshop@1 &>>{LOG_FILE}
+  stat_check $? "Uninstall password plugin"
+fi
 
-# mysql -u root -p
 
-#Run the following SQL commands to remove the password policy.
-#> uninstall plugin validate_password;
-#Setup Needed for Application.
-#As per the architecture diagram, MySQL is needed by
-
-#Shipping Service
-#So we need to load that schema into the database, So those applications will detect them and run accordingly.
-
-#To download schema, Use the following command
-
-# curl -s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip"
-#Load the schema for Services.
-
-# cd /tmp
-# unzip mysql.zip
-# cd mysql-main
-# mysql -u root -pRoboShop@1 <shipping.sql
+#DOWNLOAD mysql
+#cd mysql-main
+#mysql -u root -pRoboShop@1 <shipping.sql
