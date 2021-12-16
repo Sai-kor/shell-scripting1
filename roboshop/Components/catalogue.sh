@@ -4,8 +4,11 @@ source Components/common.sh
 yum install nodejs make gcc-c++ -y &>>${LOG_FILE}
 stat_check $? "Install nodejs"
 
-useradd roboshop &>>${LOG_FILE}
-stat_check $? "Add app user"
+id roboshop &>>${LOG_FILE}
+if [ $? -ne 0 ]; then
+ useradd roboshop &>>${LOG_FILE}
+ stat_check $? "Add app user"
+fi
 DOWNLOAD catalogue
 #$ mv catalogue-main catalogue
 #$ cd /home/roboshop/catalogue
