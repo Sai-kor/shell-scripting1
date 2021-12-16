@@ -16,6 +16,8 @@ stat_check $? "Copy catalogue content"
 
 cd /home/roboshop/catalogue && npm install --unsafe-perm &>>{LOG_FILE}
 stat_check $? "Install Nodejs dependencies"
+
+chown roboshop:roboshop -R /home/roboshop
 #$ mv catalogue-main catalogue
 #$ cd /home/roboshop/catalogue
 #$ npm install
