@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo cart setup
+NODEJS cart
