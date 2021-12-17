@@ -25,7 +25,7 @@ SYSTEMD_SETUP(){
      /home/roboshop/${COMPONENT}/systemd.service &>>${LOG_FILE} && mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service &>>${LOG_FILE}
     stat_check $? "update systemd config file"
 
-    systemctl daemon-reload&>>${LOG_FILE} && systemctl start ${COMPONENT}&>>${LOG_FILE} && systemctl enable ${COMPONENT}&>>${LOG_FILE}
+    systemctl daemon-reload &>>${LOG_FILE} && systemctl start ${COMPONENT}&>>${LOG_FILE} && systemctl enable ${COMPONENT}&>>${LOG_FILE}
     stat_check $? "Start ${COMPONENT} service"
 }
 APP_USER_SETUP(){
@@ -69,5 +69,22 @@ JAVA(){
   cd /home/roboshop/${COMPONENT} && mvn clean package &>>${LOG_FILE} && mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar &>>${LOG_FILE}
   stat_check $? "Compile Java Code"
 
+SYSTEMD_SETUP
+}
+
+PYTHON(){
+  COMPONENT=${1}
+  yum install python36 gcc python3-devel -y &>>${LOG_FILE}
+  stat_check $? "Installing python"
+
+  APP_USER_SETUP
+
+  cd /home/roboshop/${COMPONENT} && pip3 install -r requirements.txt &>>${LOG_FILE}
+  stat_check $? "Instal python dependencies"
+
+
+ # Update the roboshop user and group id in payment.ini file.
+
+ # Setup the service
 SYSTEMD_SETUP
 }
