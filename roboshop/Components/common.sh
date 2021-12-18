@@ -48,8 +48,10 @@ DOWNLOAD(){
   cd /tmp
   unzip -o /tmp/${1}.zip&>>${LOG_FILE}
   stat_check $? "Extracting ${1} code"
-  rm -rf /home/roboshop/${COMPONENT} && mkdir -p /home/roboshop/${COMPONENT} && cp -r /tmp/${COMPONENT}-main/* /home/roboshop/${COMPONENT} &>>${LOG_FILE}
-    stat_check $? "Copy ${COMPONENT} content"
+  if [ ! -z "${COMPONENT}" ]; then
+      rm -rf /home/roboshop/${COMPONENT} && mkdir -p /home/roboshop/${COMPONENT} && cp -r /tmp/${COMPONENT}-main/* /home/roboshop/${COMPONENT} &>>${LOG_FILE}
+      stat_check $? "Copy ${COMPONENT} content"
+  fi
 }
 
 NODEJS(){
