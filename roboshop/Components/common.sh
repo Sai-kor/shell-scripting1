@@ -93,6 +93,8 @@ SYSTEMD_SETUP
 }
 
 GOLANG(){
+  COMPONENT=${1}
+
   yum install golang -y &>>${LOG_FILE}
   stat_check $? "Installing golang"
 
