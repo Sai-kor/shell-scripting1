@@ -91,3 +91,15 @@ PYTHON(){
  # Setup the service
 SYSTEMD_SETUP
 }
+
+GOLANG(){
+  yum install golang -y &>>${LOG_FILE}
+  stat_check $? "Installing golang"
+
+  APP_USER_SETUP
+
+  cd /home/roboshop/${COMPONENT} && go mod init dispatch &>>${LOG_FILE} && go get &>>${LOG_FILE} && go build &>>${LOG_FILE}
+  stat_check $? "Install golang dependencies and compile"
+
+SYSTEMD_SETUP
+}
