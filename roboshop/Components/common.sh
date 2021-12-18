@@ -25,6 +25,7 @@ SYSTEMD_SETUP(){
     -e 's/CARTHOST/cart.devops.internal/' \
     -e 's/USERHOST/user.devops.internal/' \
     -e 's/AMQPHOST/rabbitmq.devops.internal/' \
+    -e 's/RABBITMQ-IP/rabbitmq.devops.internal/' \
      /home/roboshop/${COMPONENT}/systemd.service &>>${LOG_FILE} && mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service &>>${LOG_FILE}
     stat_check $? "update systemd config file"
 
