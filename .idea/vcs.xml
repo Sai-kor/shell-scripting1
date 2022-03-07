@@ -12,5 +12,6 @@
     <mapping directory="$PROJECT_DIR$/roboshop/shipping" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/roboshop/user" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/sample" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/terraform" vcs="Git" />
   </component>
 </project>
