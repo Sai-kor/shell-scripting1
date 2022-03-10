@@ -14,6 +14,7 @@
     <mapping directory="$PROJECT_DIR$/sample" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/terraform" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/terraform-mutable-alb" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/terraform-mutable-app-module" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/terraform-vpc" vcs="Git" />
   </component>
 </project>
